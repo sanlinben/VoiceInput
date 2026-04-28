@@ -45,7 +45,6 @@
 
 ### 3.4 模型集成
 
-- **模型路径**: `/Users/benchi/.omlx/models/mlx-community/Qwen3-ASR-1.7B-4bit`
 - **加载方式**: `Qwen3ASRModel.fromPretrained(path:)`，支持传入自定义路径
 - **API 签名**:
   ```swift
@@ -225,4 +224,3 @@ STT/
 | M4 — 文本注入 | Accessibility API / CGEvent 注入任意文本框 | 2 天 |
 | M5 — 快捷键 + 完整闭环 | 全局快捷键 push-to-talk + VAD 模式，端到端测试 | 2 天 |
 
-**总计预估: ~10 个工作日 (一人开发)**
