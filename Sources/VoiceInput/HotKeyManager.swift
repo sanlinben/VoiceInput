@@ -6,7 +6,8 @@ import Observation
 /// Uses Carbon RegisterEventHotKey for reliable global shortcut registration.
 /// Mode: tap Cmd+Shift+D to start recording, tap again to stop and transcribe.
 @Observable
-final class HotKeyManager {
+@MainActor
+final class HotKeyManager: ObservableObject {
     enum RecordingState: Equatable {
         case idle
         case recording
