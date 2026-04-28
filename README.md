@@ -149,7 +149,6 @@ let audio = recorder.stopRecording()  // → [Float]
 1. 首次启动: 使用 `Qwen3ASRModel.fromPretrained(path: modelPath)` 加载本地模型
 2. 加载后保持驻留内存, 不卸载
 3. 提供启动预加载 (launch at login) 和按需加载两种模式
-4. 模型路径可配置, 默认 `~/.omlx/models/mlx-community/Qwen3-ASR-1.7B-4bit`
 
 ## Risks & Mitigations
 
