@@ -2,7 +2,7 @@ Implementation Plan: VoiceInput (macOS 语音输入助手)
 
 ## Context
 
-将系统任意文本框的键盘输入替换为语音输入。本地已有 Qwen3-ASR 1.7B 4-bit 模型，利用 speech-swift 库调用 MLX 推理。参考 speech-swift/Examples/SpeechDemo 的 DictateViewModel 和 AudioRecorder 模式。
+将系统任意文本框的键盘输入替换为语音输入。本地已有 Qwen3-ASR 1.7B 4-bit 模型，利用 speech-swift 库调用 MLX 推理。
 
 ## Architecture
 
