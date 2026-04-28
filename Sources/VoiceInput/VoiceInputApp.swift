@@ -9,7 +9,7 @@ struct VoiceInputApp: App {
         MenuBarExtra {
             AppMenuView()
         } label: {
-            Image(systemName: appDelegate.menuBarIcon)
+            MenuBarIconView(manager: appDelegate.hotKeyManager)
         }
     }
 }
@@ -25,7 +25,14 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private var hudWindow: NSWindow?
     private var hudHostingView: NSHostingView<HUDView>?
 
-    private let modelPath = "/Users/benchi/.omlx/models/mlx-community/Qwen3-ASR-1.7B-4bit"
+    private var modelPath: String {
+        if let envPath = ProcessInfo.processInfo.environment["VOICEINPUT_MODEL_PATH"] {
+            return envPath
+        }
+        // Default to standard MLX cache location
+        let homeDir = FileManager.default.homeDirectoryForCurrentUser
+        return homeDir.appendingPathComponent(".omlx/models/mlx-community/Qwen3-ASR-1.7B-4bit").path
+    }
 
     var menuBarIcon: String {
         switch hotKeyManager.recordingState {
@@ -153,6 +160,24 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func refreshHUD() {
         hudHostingView?.rootView = makeHUDView()
+    }
+}
+
+// MARK: - Menu Bar Icon
+
+struct MenuBarIconView: View {
+    @ObservedObject var manager: HotKeyManager
+
+    var body: some View {
+        Image(systemName: iconName)
+    }
+
+    private var iconName: String {
+        switch manager.recordingState {
+        case .idle: return "mic.fill"
+        case .recording: return "waveform.badge.mic"
+        case .transcribing: return "arrow.triangle.2.circlepath"
+        }
     }
 }
 

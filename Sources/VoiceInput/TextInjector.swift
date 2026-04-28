@@ -5,7 +5,14 @@ import CoreGraphics
 /// Primary: CGEvent-based keyboard typing (character by character)
 /// Fallback: NSPasteboard + Cmd+V simulation
 enum TextInjector {
-    private static let sessionTap = CGEventTapLocation(rawValue: 0)!
+    private static let sessionTap: CGEventTapLocation = {
+        // CGEventTapLocation enum has specific values: .cgsession (0), .session (2), .annotated (3)
+        // We use .cgsession for system-wide event posting
+        guard let location = CGEventTapLocation(rawValue: 0) else {
+            fatalError("Failed to create CGEventTapLocation - this should never happen on macOS")
+        }
+        return location
+    }()
     /// Type text into the focused text field using CGEvent keyboard events.
     /// Supports Unicode characters including CJK.
     static func typeText(_ text: String) {
