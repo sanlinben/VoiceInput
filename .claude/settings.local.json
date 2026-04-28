@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(design-consultation)",
+      "Skill(design-consultation:*)",
+      "Bash(python3 -c \"import mlx; print\\(mlx.__version__\\)\")",
+      "Bash(python3 -c \"import mlx.core as mx; print\\(mx.metal.is_available\\(\\)\\)\")",
+      "Bash(python3 cli_demo.py)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)"
+    ]
+  }
+}

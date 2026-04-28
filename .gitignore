@@ -1,0 +1,29 @@
+# Build
+.build/
+*.build/
+.build/*
+
+# Xcode
+*.xcworkspace
+*.xcuserdata
+*.xcodeproj/xcuserdata/
+
+# macOS
+.DS_Store
+*.swp
+*.swo
+
+# Dependencies (SPM managed)
+Packages/
+
+# Temp files
+/tmp/
+*.tmp
+
+# Environment
+.env
+
+# IDE
+.idea/
+.vscode/
+*.swp
